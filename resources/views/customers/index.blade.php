@@ -21,6 +21,7 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Address</th>
+                    <th>Paid</th>
                     <th>Created At</th>
                     <th>Actions</th>
                 </tr>
@@ -37,6 +38,8 @@
                         <td>{{$customer->email}}</td>
                         <td>{{$customer->phone}}</td>
                         <td>{{$customer->address}}</td>
+                        <td>{{$total}}</td>
+
                         <td>{{$customer->created_at}}</td>
                         <td>
                             <a href="{{ route('customers.edit', $customer) }}" class="btn btn-primary"><i

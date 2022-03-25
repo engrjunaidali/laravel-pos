@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CustomerStoreRequest;
 use App\Models\Customer;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -23,7 +24,20 @@ class CustomerController extends Controller
             );
         }
         $customers = Customer::latest()->paginate(10);
-        return view('customers.index')->with('customers', $customers);
+
+        $orders = Order::all();
+
+        // $orders = Order::select([
+        //     'customer_id' => $customers->customer_id
+        // ]);
+        
+        $total = $orders->map(function($i) {
+            return $i->total();
+        })->sum();
+
+        // return view('customers.index')->with('customers', $customers);
+        return view('customers.index',['customers'=>$customers,
+        'total'=>$total]);
     }
 
     /**

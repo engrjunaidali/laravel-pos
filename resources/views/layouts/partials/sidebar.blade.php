@@ -58,6 +58,7 @@
                         <p>Settings</p>
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link" onclick="document.getElementById('logout-form').submit()">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
@@ -67,6 +68,35 @@
                         </form>
                     </a>
                 </li>
+
+                
+                {{-- REMAINING --}}
+
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('settings.index') }}" class="nav-link {{ activeSegment('settings') }}">
+                        <i class="nav-icon fas fa-cogs"></i>
+                        <p>STOCK</p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('settings.index') }}" class="nav-link {{ activeSegment('settings') }}">
+                        <i class="nav-icon fas fa-cogs"></i>
+                        <p>Suppliers</p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('settings.index') }}" class="nav-link {{ activeSegment('settings') }}">
+                        <i class="nav-icon fas fa-cogs"></i>
+                        <p>Product Companies</p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('settings.index') }}" class="nav-link {{ activeSegment('settings') }}">
+                        <i class="nav-icon fas fa-cogs"></i>
+                        <p>Ledger</p>
+                    </a>
+                </li>
+                
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

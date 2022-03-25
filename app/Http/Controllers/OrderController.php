@@ -21,10 +21,10 @@ class OrderController extends Controller
         $total = $orders->map(function($i) {
             return $i->total();
         })->sum();
+        
         $receivedAmount = $orders->map(function($i) {
             return $i->receivedAmount();
         })->sum();
-
         return view('orders.index', compact('orders', 'total', 'receivedAmount'));
     }
 

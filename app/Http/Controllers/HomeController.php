@@ -29,19 +29,25 @@ class HomeController extends Controller
         $customers_count = Customer::count();
 
         return view('home', [
+            
             'orders_count' => $orders->count(),
+
+            'today_orders' => Order::where('created_at', '>=', date('Y-m-d').' 00:00:00')->get(),
+
             'income' => $orders->map(function($i) {
                 if($i->receivedAmount() > $i->total()) {
                     return $i->total();
                 }
                 return $i->receivedAmount();
             })->sum(),
+
             'income_today' => $orders->where('created_at', '>=', date('Y-m-d').' 00:00:00')->map(function($i) {
                 if($i->receivedAmount() > $i->total()) {
                     return $i->total();
                 }
                 return $i->receivedAmount();
             })->sum(),
+
             'customers_count' => $customers_count
         ]);
     }
